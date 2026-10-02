@@ -1,0 +1,7 @@
+{
+	"db_name": "test_frappe",
+	"db_password": "test_frappe",
+	"db_type": "mariadb",
+	"db_host": "127.0.0.1",
+	"db_port": 3306
+}
