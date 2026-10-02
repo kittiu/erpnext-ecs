@@ -22,6 +22,15 @@ jobs:
           cache: yarn
           cache-dependency-path: frontend/yarn.lock
 
+      # Cheap server-side guard: a syntax error in a .py file is the most common way the app
+      # breaks on install/migrate, and this catches it in two seconds.
+      - name: Check Python syntax and merge conflicts
+        run: |
+          python3 -m compileall -f erpnext_ecs
+          if grep -lr --exclude-dir=node_modules --exclude-dir=.git "^<<<<<<< " .
+          then echo "::error::Found merge conflicts"; exit 1
+          fi
+
       - name: Install dependencies
         working-directory: frontend
         run: yarn install --frozen-lockfile
