@@ -27,6 +27,7 @@ import { useRoute } from "vue-router"
 import { IonTabBar, IonTabButton, IonLabel } from "@ionic/vue"
 
 import HomeIcon from "@/components/icons/HomeIcon.vue"
+import AttendanceIcon from "@/components/icons/AttendanceIcon.vue"
 import ExpenseIcon from "@/components/icons/ExpenseIcon.vue"
 import SalaryIcon from "@/components/icons/SalaryIcon.vue"
 import { inject } from "vue"
@@ -40,6 +41,11 @@ const tabItems = [
 		icon: HomeIcon,
 		title: __("Home"),
 		route: "/home",
+	},
+	{
+		icon: AttendanceIcon,
+		title: __("Attendance"),
+		route: "/dashboard/attendance",
 	},
 	{
 		icon: ExpenseIcon,
