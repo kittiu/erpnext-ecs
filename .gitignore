@@ -4,11 +4,10 @@ __pycache__/
 *.egg-info/
 .DS_Store
 
-# node / build
+# node / build tooling
 node_modules/
 .vite/
 dist/
 
-# built SPA — produce with `yarn build` in frontend/
-erpnext_ecs/public/frontend
-erpnext_ecs/www/hrms-ecs.html
+# the built SPA IS committed (so an install works with no build step) — but never the sourcemaps
+erpnext_ecs/public/frontend/**/*.map

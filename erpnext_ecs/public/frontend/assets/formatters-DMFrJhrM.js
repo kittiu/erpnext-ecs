@@ -1,0 +1,2 @@
+import{aa as s}from"./frappe-ui-BLVBuaBM.js";import"./index-CA9g5ANq.js";const o=s({doctype:"System Settings",name:"System Settings",auto:!1}),y=(t,r)=>{var e,n;if(!r||t!=null&&t.toString().trim().includes(" "))return t;const c=((e=o.doc)==null?void 0:e.country)=="India"?"en-IN":(n=o.doc)==null?void 0:n.language;return Intl.NumberFormat(c,{style:"currency",currency:r,trailingZeroDisplay:"stripIfInteger",currencyDisplay:"narrowSymbol"}).format(t).replace(/^(\D+)/,"$1 ").replace(/\s+/," ")};export{y as f};
+//# sourceMappingURL=formatters-DMFrJhrM.js.map
