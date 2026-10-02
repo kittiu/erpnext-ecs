@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    name: Build the SPA and hold the feature contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        working-directory: frontend
+        run: yarn build
+
+      - name: Feature contract — shipped features present, hidden ones absent
+        run: bash scripts/check_trim.sh
+
+      # The built SPA is committed to this repo so a Frappe Cloud install needs no build step.
+      # That makes "edited the source, forgot to rebuild" a real failure mode: catch it here.
+      - name: Committed build matches the source
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::The build output committed in this repo does not match a fresh build from these sources."
+            git --no-pager diff --stat
+            exit 1
+          fi
+          echo "committed build is up to date"
