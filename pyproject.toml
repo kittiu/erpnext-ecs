@@ -1,0 +1,25 @@
+[project]
+name = "erpnext_ecs"
+authors = [
+    { name = "Ecosoft", email = "kittiu@ecosoft.co.th" },
+]
+description = "Ecosoft's customisations on top of ERPNext / HRMS"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0,<17.0.0"
+erpnext = ">=16.0.0,<17.0.0"
+hrms = ">=16.0.0,<17.0.0"
+
+[project.urls]
+Repository = "https://github.com/kittiu/erpnext-ecs"

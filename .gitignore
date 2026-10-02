@@ -1,0 +1,14 @@
+# python
+*.pyc
+__pycache__/
+*.egg-info/
+.DS_Store
+
+# node / build
+node_modules/
+.vite/
+dist/
+
+# built SPA — produce with `yarn build` in frontend/
+erpnext_ecs/public/frontend
+erpnext_ecs/www/hrms-ecs.html
